@@ -1,0 +1,46 @@
+name: test-pi3-kernel
+version: '6.0.5'
+summary: Colonel Kernel for the RPi 3 (aarch64)
+build-base: core22
+description: |
+  This is my kernel.
+  There are many like it, but this one is mine.
+type: kernel
+grade: devel
+confinement: strict
+architectures:
+  - build-on: [amd64]
+    build-for: [arm64]
+package-repositories:
+  - type: apt
+    components: [main]
+    suites: [jammy]
+    key-id: 78E1918602959B9C59103100F1831DDAFC42E99D
+    url: http://ppa.launchpad.net/snappy-dev/image/ubuntu/
+    architectures: [arm64]
+parts:
+  kernel:
+    plugin: kernel
+    source: https://github.com/raspberrypi/linux.git
+    source-type: git
+    source-depth: 1
+    source-branch: rpi-6.0.y
+    kernel-kdefconfig:
+      - bcmrpi3_defconfig
+    kernel-kconfigs:
+      - CONFIG_ENCRYPTED_KEYS=y
+      - CONFIG_SQUASHFS=y
+    kernel-with-firmware: false
+    kernel-build-efi-image: false
+    build-packages:
+      - on arm64:
+        - gcc
+      - else:
+        - gcc-aarch64-linux-gnu
+    stage-packages:
+      - linux-firmware-raspi:arm64
+      - wireless-regdb:all
+      - bluez-firmware:all
+  dtb-meta:
+    plugin: dump
+    source: dtb-meta
