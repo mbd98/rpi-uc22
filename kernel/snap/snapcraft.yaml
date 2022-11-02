@@ -1,5 +1,5 @@
 name: test-pi3-kernel
-version: '6.0.5'
+adopt-info: kernel
 summary: Colonel Kernel for the RPi 3 (aarch64)
 build-base: core22
 description: |
@@ -21,6 +21,10 @@ package-repositories:
 parts:
   kernel:
     plugin: kernel
+    override-build: |
+      cd $CRAFT_PART_SRC
+      craftctl set version=`make -s kernelversion`
+      craftctl default
     source: https://github.com/raspberrypi/linux.git
     source-type: git
     source-depth: 1
