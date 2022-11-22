@@ -1,4 +1,4 @@
-name: test-pi3-kernel
+name: mbd-rpi-k
 adopt-info: kernel
 summary: Colonel Kernel for the RPi 3 (aarch64)
 build-base: core22
@@ -9,7 +9,7 @@ type: kernel
 grade: devel
 confinement: strict
 architectures:
-  - build-on: [amd64]
+  - build-on: [amd64, arm64]
     build-for: [arm64]
 package-repositories:
   - type: apt
@@ -23,7 +23,7 @@ parts:
     plugin: kernel
     override-build: |
       cd $CRAFT_PART_SRC
-      craftctl set version=`make -s kernelversion`
+      craftctl set version=`make -s kernelversion`-`git rev-parse --short HEAD`
       craftctl default
     source: https://github.com/raspberrypi/linux.git
     source-type: git
@@ -37,6 +37,11 @@ parts:
     kernel-with-firmware: false
     kernel-build-efi-image: false
     build-packages:
+      - build-essential
+      - bison
+      - flex
+      - libssl-dev
+      - libelf-dev
       - on arm64:
         - gcc
       - else:
