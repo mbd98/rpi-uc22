@@ -1,23 +1,26 @@
 {
     "type": "model",
     "series": "16",
-    "authority-id": "5lbGwgbYZU7FmTCQ3wqlJc3MunnKRdBt",
-    "brand-id": "5lbGwgbYZU7FmTCQ3wqlJc3MunnKRdBt",
-    "model": "rpi-uc22",
+    "authority-id": "P6dgVeuoAbrvPznd7Ysvw9Bye4MrxgM3",
+    "brand-id": "P6dgVeuoAbrvPznd7Ysvw9Bye4MrxgM3",
+    "model": "mbd-rpi-uc22",
     "architecture": "arm64",
-    "timestamp": "2022-10-27T20:54:02+00:00",
+    "timestamp": "2022-11-07T22:03:53+00:00",
     "base": "core22",
-    "grade": "dangerous",
+    "grade": "signed",
+    "store": "ce-team-test",
     "snaps": [
         {
-            "name": "pi",
+            "name": "mbd-rpi-g",
             "type": "gadget",
-	    "default-channel": "22/stable",
-            "id": "YbGa9O3dAXl88YLI6Y1bGG74pwBxZyKg"
+	    "default-channel": "latest/beta",
+            "id": "zatkzsD52FVUBzo8OEqPU3cXxvLTUP0x"
         },
         {
-            "name": "test-pi3-kernel",
-            "type": "kernel"
+            "name": "mbd-rpi-k",
+            "type": "kernel",
+	    "default-channel": "latest/beta",
+	    "id": "EE0Ke4dwHhhxQ3Y4CDeYJplUgegi2YYe"
         },
         {
             "name": "core22",
