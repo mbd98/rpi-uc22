@@ -1,1 +1,5 @@
 ce-test
+*.img
+*.img.zst
+seed.manifest
+
