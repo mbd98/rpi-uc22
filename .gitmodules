@@ -1,0 +1,3 @@
+[submodule "gadget"]
+	path = gadget
+	url = git@github.com:mbd98/mbd-rpi-g.git
